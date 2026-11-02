@@ -1,0 +1,62 @@
+# Site checks: valid HTML and working links. Runs on pull requests, on main, and weekly, because
+# links rot without any change here. Pages deploys main as it is; nothing here builds the site.
+name: Site Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "0 7 * * 1" # Mondays, 07:00 UTC
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  html:
+    name: HTML
+    runs-on: ubuntu-26.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: lts/*
+      # The repository has no packages: npx fetches the checker in CI only.
+      # Dependabot does not see this pin: bump it by hand, to a release at least a week old.
+      - name: Validate the pages
+        run: npx --yes html-validate@11.17.0 index.html 404.html og/card.html
+
+  links:
+    name: Links
+    runs-on: ubuntu-26.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # Links to gleon.rs and to files of this repository are skipped: a pull request may add a
+      # file that is not on main yet.
+      - name: Check every link
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          args: >-
+            --no-progress
+            --root-dir ${{ github.workspace }}
+            --exclude '^https://gleon\.rs'
+            --exclude '^https://github\.com/gleon-rs/gleon-rs\.github\.io/'
+            index.html 404.html README.md SECURITY.md .well-known/security.txt
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,21 @@
+# Weekly updates on Sunday morning (Vienna), as in gleon-rs/flutter. A 7-day cooldown skips
+# releases that get yanked or patched right away. Without custom labels, Dependabot creates and
+# applies its default labels itself.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: sunday
+      time: "09:00"
+      timezone: Europe/Vienna
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: chore
+      include: scope
+    open-pull-requests-limit: 10
+    groups:
+      github-actions:
+        patterns: ["*"]

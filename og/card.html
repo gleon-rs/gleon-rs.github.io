@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>gleon social card</title>
+<!-- Source of /og.png (1200x630). Re-render with headless Chrome:
+     chrome --headless=new --hide-scrollbars --blink-settings=preferredColorScheme=1 --window-size=1200,630 --screenshot=og.png og/card.html -->
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  .card {
+    display: grid; grid-template-columns: 520px 1fr; gap: 56px; align-items: center;
+    width: 1200px; height: 630px; padding: 64px 72px;
+    border-bottom: 10px solid var(--ink);
+  }
+  .card .wordmark { font-size: 2.25rem; }
+  .card h1 { margin-top: 40px; font-size: 4.6rem; }
+  .card .url { margin-top: 32px; font-size: 1.375rem; color: var(--muted); }
+  .card .pane-cap { font-size: 1rem; }
+  .card .pane-cap b { font-size: 1.125rem; }
+  .card .pane-cap code { font-size: 0.9375rem; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div>
+    <span class="wordmark">gleon</span>
+    <h1>Screenshot tests that show what changed.</h1>
+    <p class="url">gleon.rs</p>
+  </div>
+  <ul class="panes">
+    <li class="pane golden">
+      <div class="shot"><div class="bar">gleon counter</div><p class="msg">You have pushed the button this many times:</p><p class="count">3</p><span class="fab">+</span></div>
+      <p class="pane-cap"><b>Golden</b><code>macos-aarch64</code></p>
+    </li>
+    <li class="pane candidate">
+      <div class="shot"><div class="bar">gleon counter</div><p class="msg">You have pushed the button this many times:</p><p class="count">4</p><span class="fab">+</span></div>
+      <p class="pane-cap"><b>Candidate</b><code>linux-x86_64</code></p>
+    </li>
+    <li class="pane diff">
+      <div class="shot"><div class="bar">gleon counter</div><p class="msg">You have pushed the button this many times:</p><p class="count"><span>3</span><span>4</span></p><span class="area"></span><span class="area-label">failing area</span><span class="fab">+</span></div>
+      <p class="pane-cap"><b>Diff</b><code>gleonDiff.png</code></p>
+    </li>
+  </ul>
+</div>
+</body>
+</html>

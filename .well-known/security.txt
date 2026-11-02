@@ -1,0 +1,5 @@
+Contact: https://github.com/gleon-rs/gleon/security/advisories/new
+Expires: 2027-11-01T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://gleon.rs/.well-known/security.txt
+Policy: https://github.com/gleon-rs/gleon-rs.github.io/blob/main/SECURITY.md

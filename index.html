@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f1115" media="(prefers-color-scheme: dark)">
+<title>gleon: screenshot tests that show what changed</title>
+<meta name="description" content="gleon compares the screenshots of your tests with your goldens. It finds real changes and ignores font differences between operating systems. A Rust CLI for each test runner, and SDKs for test frameworks.">
+<link rel="canonical" href="https://gleon.rs/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gleon.rs/">
+<meta property="og:site_name" content="gleon">
+<meta property="og:title" content="gleon: screenshot tests that show what changed">
+<meta property="og:description" content="gleon compares the screenshots of your tests with your goldens. A Rust CLI for each test runner, and SDKs for test frameworks.">
+<meta property="og:image" content="https://gleon.rs/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="gleon: screenshot tests that show what changed. A golden, a candidate and the diff that gleon writes.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="banner">
+  <div class="wrap"><strong>Free for all users until December 31, 2026.</strong> <a href="#pricing">Pricing</a></div>
+</div>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="wordmark" href="/" aria-label="gleon home">gleon</a>
+    <nav class="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#how">How it works</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#install">Install</a></li>
+        <li><a href="https://github.com/gleon-rs">GitHub</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div class="hero-copy">
+        <h1 id="hero-title">Screenshot tests that show what changed.</h1>
+        <p class="lede">gleon compares the screenshots of your tests with your goldens. It finds real changes and ignores font differences between operating systems. Use the CLI with each test runner, or an SDK in your test framework.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#install">Install the CLI</a>
+          <a class="btn btn-plain" href="#products">See the products</a>
+        </div>
+      </div>
+
+      <div class="hero-proof">
+        <figure>
+          <figcaption class="visually-hidden">A failed golden test. Left: the golden from macOS. Middle: the candidate from Linux. Right: the diff that gleon writes. gleon tolerates the text from the other operating system. The changed counter fails.</figcaption>
+          <ul class="panes">
+            <li class="pane golden">
+              <div class="shot" aria-hidden="true">
+                <div class="bar">gleon counter</div>
+                <p class="msg">You have pushed the button this many times:</p>
+                <p class="count">3</p>
+                <span class="fab">+</span>
+              </div>
+              <p class="pane-cap"><b>Golden</b><code>macos-aarch64</code></p>
+            </li>
+            <li class="pane candidate">
+              <div class="shot" aria-hidden="true">
+                <div class="bar">gleon counter</div>
+                <p class="msg">You have pushed the button this many times:</p>
+                <p class="count">4</p>
+                <span class="fab">+</span>
+              </div>
+              <p class="pane-cap"><b>Candidate</b><code>linux-x86_64</code></p>
+            </li>
+            <li class="pane diff">
+              <div class="shot" aria-hidden="true">
+                <div class="bar">gleon counter</div>
+                <p class="msg">You have pushed the button this many times:</p>
+                <p class="count"><span>3</span><span>4</span></p>
+                <span class="area"></span>
+                <span class="area-label">failing area</span>
+                <span class="fab">+</span>
+              </div>
+              <p class="pane-cap"><b>Diff</b><code>counter_gleonDiff.png</code></p>
+            </li>
+          </ul>
+          <ul class="legend" aria-hidden="true">
+            <li><span class="swatch swatch-y"></span>Text from another OS, tolerated</li>
+            <li><span class="swatch swatch-r"></span>Changed counter, fails</li>
+          </ul>
+        </figure>
+
+<pre class="code wrap-lines run"><code><span class="prompt">$ </span><span class="sel">gleon test -- flutter test</span>
+Run run-20261020T101500Z-1a2b3c4d: 128 case(s): 125 passed, <span class="fail">3 failed</span> (2 mismatch, 1 missing)
+<span class="prompt">$ </span><span class="cursor" aria-hidden="true"></span></code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products: equal columns, each in the colour of its language -->
+  <section class="section" id="products" aria-labelledby="products-title">
+    <div class="wrap">
+      <h2 id="products-title">One engine for all test runners</h2>
+      <p class="intro">The CLI works with each test runner that writes PNG files. The SDKs work inside your test framework. All of them use the same Rust engine and the same <code>.gleon/gleon.yaml</code> file.</p>
+
+      <ul class="products section-body">
+        <li class="product lang-cli" id="cli">
+          <h3>gleon CLI <span class="status">Available</span></h3>
+          <p class="tagline">For each test runner that writes PNG files</p>
+          <ul class="points">
+            <li>A summary for each run, with one line for each failure</li>
+            <li>An HTML report that shows the golden, the candidate and the diff</li>
+            <li>Markdown, JUnit and JSON reports for your CI</li>
+            <li>A comment on the pull request. Write <code>/gleon approve</code> to commit the new goldens.</li>
+            <li>Goldens in Git, or manifests in Git and images in S3, R2 or Google Cloud Storage</li>
+          </ul>
+<pre class="code"><code><span class="sel">gleon init --generic</span> <span class="comment"># once</span>
+<span class="sel">gleon stage</span>          <span class="comment"># record</span>
+<span class="sel">gleon diff</span>           <span class="comment"># compare</span>
+<span class="sel">gleon report html</span></code></pre>
+          <p class="more"><a href="https://github.com/gleon-rs/gleon/releases">Download for macOS, Linux and Windows</a></p>
+        </li>
+
+        <li class="product lang-flutter" id="flutter">
+          <h3>Flutter package <span class="status">Available</span></h3>
+          <p class="tagline">Replaces <code>matchesGoldenFile</code></p>
+          <ul class="points">
+            <li>5 to 20 times faster than the built-in comparator</li>
+            <li><code>exact</code>, <code>pixel</code> and <code>ssim</code> tolerance, and ignore regions</li>
+            <li>The real fonts of your app. gleon compares text on the platform that recorded the golden.</li>
+            <li>Works with alchemist, golden_toolkit and golden_screenshot</li>
+            <li>No Rust toolchain is necessary</li>
+          </ul>
+<pre class="code"><code><span class="del">import 'package:flutter_test/flutter_test.dart';</span>
+<span class="sel">import 'package:gleon/gleon.dart';</span></code></pre>
+          <p class="more"><a href="https://github.com/gleon-rs/flutter">Read the package guide</a></p>
+        </li>
+
+        <li class="product lang-next">
+          <h3>More SDKs <span class="status">Coming soon</span></h3>
+          <p class="tagline">For more test frameworks</p>
+          <ul class="points">
+            <li>SDKs for more test frameworks are in development</li>
+            <li>They use the same engine, configuration and reports</li>
+            <li>Until then, use the CLI. It compares the PNG files of each test runner.</li>
+          </ul>
+<pre class="code"><code><span class="comment"># .gleon/gleon.yaml</span>
+screenshots:
+  - include: "e2e/**/*.png"
+    mode: pixel
+    diff:
+      threshold: 0.01</code></pre>
+          <p class="more"><a href="https://github.com/gleon-rs/gleon">Watch the CLI repository</a></p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- What changes -->
+  <section class="section" aria-labelledby="switch-title">
+    <div class="wrap">
+      <h2 id="switch-title">What changes when you use gleon</h2>
+      <p class="intro">Most golden test suites have the same problems. This is what gleon does for each problem.</p>
+
+      <div class="compare section-body">
+        <div class="compare-head" aria-hidden="true"><span>Without gleon</span><span>With gleon</span></div>
+        <dl>
+          <div class="compare-row">
+            <dt>A golden from macOS fails on Linux. Each operating system draws fonts differently.</dt>
+            <dd>Each golden records the platform that made it. gleon compares text strictly on that platform and ignores text on other platforms. Layout stays exact. You can update goldens on each operating system, without Docker.</dd>
+          </div>
+          <div class="compare-row">
+            <dt>A threshold of 1% lets a missing icon pass on a large screen.</dt>
+            <dd>In <code>pixel</code> mode, you set the ratio. In <code>ssim</code> mode, gleon uses the lowest local similarity. A small change on a large golden does not disappear in an average.</dd>
+          </div>
+          <div class="compare-row">
+            <dt>The test font draws each letter as the same box. The goldens cannot show text.</dt>
+            <dd>The SDK loads the real fonts of your app. gleon compares only the text that is really painted. Hidden pages cannot hide a change.</dd>
+          </div>
+          <div class="compare-row">
+            <dt>A failed CI job shows that something changed. It does not show where, or how near the other goldens were to failure.</dt>
+            <dd>gleon gives a summary for each run and an HTML report with the golden, the candidate and the diff. It writes a comment on the pull request. <code>/gleon approve</code> commits the new goldens. Metrics show the margin of each golden that passed.</dd>
+          </div>
+          <div class="compare-row">
+            <dt>The built-in comparison is slow. Most of the time goes to PNG encoding.</dt>
+            <dd>gleon compares raw pixels in Rust. It is 5 to 20 times faster than the built-in comparator, and <code>ssim</code> mode is as fast as <code>exact</code> mode.</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="section" id="how" aria-labelledby="how-title">
+    <div class="wrap">
+      <h2 id="how-title">How it works</h2>
+      <p class="intro">Use three commands on your computer and one step in CI. Your test command does not change.</p>
+
+      <ol class="steps section-body">
+        <li class="step">
+          <div>
+            <h3>Make a workspace</h3>
+            <p><code>gleon init</code> makes the <code>.gleon/gleon.yaml</code> file. This file sets the comparison rules for your goldens. Without a tolerance, gleon compares exactly.</p>
+          </div>
+<pre class="code"><code><span class="comment"># .gleon/gleon.yaml</span>
+baselines: goldens
+fallback_platform: macos-aarch64
+screenshots:
+  - include: "**/test/**/*.png"
+    mode: ssim <span class="comment"># or exact, pixel</span>
+exclude:
+  - "**/failures/**"</code></pre>
+        </li>
+        <li class="step">
+          <div>
+            <h3>Run your tests with gleon</h3>
+            <p>gleon records one run. It shows the totals and one line for each failure. It exits with the exit code of your tests.</p>
+          </div>
+<pre class="code wrap-lines"><code><span class="prompt">$ </span><span class="sel">gleon test -- flutter test</span>
+Run run-20261020T101500Z-1a2b3c4d: 128 case(s): 125 passed, <span class="fail">3 failed</span> (2 mismatch, 1 missing)
+  test/goldens/counter_3: Mismatch: 0.0167% (1 of 6000px) differ (.gleon/runs/latest/cases/macos-aarch64/test/goldens/counter_3.json)</code></pre>
+        </li>
+        <li class="step">
+          <div>
+            <h3>Examine and approve</h3>
+            <p>The HTML report shows each failure with its golden, candidate and diff. <code>gleon approve</code> writes the accepted candidates over their goldens.</p>
+          </div>
+<pre class="code"><code><span class="prompt">$ </span><span class="sel">gleon report html --out .gleon/runs/latest/report.html</span>
+<span class="prompt">$ </span><span class="sel">gleon approve</span></code></pre>
+        </li>
+      </ol>
+
+      <div class="ci">
+        <div>
+          <h3>In CI</h3>
+          <p>The GitHub Action runs your tests. It writes the failures in a comment on the pull request and uploads the run. Write <code>/gleon approve</code> in the pull request to commit the new goldens. On other CI systems, use the JUnit report from <code>gleon report junit</code>.</p>
+        </div>
+<pre class="code"><code>- uses: gleon-rs/gleon@main
+  with:
+    command: verify
+    test-command: flutter test</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Speed and proof -->
+  <section class="section" id="speed" aria-labelledby="speed-title">
+    <div class="wrap">
+      <h2 id="speed-title">Speed and proof</h2>
+      <p class="intro">The built-in comparator encodes a PNG file for each frame. gleon compares the raw pixels in Rust. It encodes a PNG file only to keep a failure.</p>
+
+      <div class="speed section-body">
+        <div>
+          <div class="table-scroll">
+            <table class="bench">
+              <caption>One golden, from the captured frame to the result</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Result</th>
+                  <th scope="col">Golden</th>
+                  <th scope="col" class="num">Built-in</th>
+                  <th scope="col" class="num">gleon</th>
+                  <th scope="col" class="num">Speedup</th>
+                  <th scope="col" class="bars"><span class="visually-hidden">Relative time</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Passed</th><td>400x300</td><td class="num">9.60 ms</td><td class="num">0.43 ms</td><td class="num x">22x</td>
+                  <td class="bars" aria-hidden="true"><span class="bar-track"><span class="bar-builtin"></span><span class="bar-gleon" style="--r: 4.5%"></span></span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Passed</th><td>390x844</td><td class="num">15.5 ms</td><td class="num">1.19 ms</td><td class="num x">13x</td>
+                  <td class="bars" aria-hidden="true"><span class="bar-track"><span class="bar-builtin"></span><span class="bar-gleon" style="--r: 7.7%"></span></span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Passed</th><td>1170x2532</td><td class="num">89.4 ms</td><td class="num">7.3 ms</td><td class="num x">12x</td>
+                  <td class="bars" aria-hidden="true"><span class="bar-track"><span class="bar-builtin"></span><span class="bar-gleon" style="--r: 8.2%"></span></span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Failed</th><td>400x300</td><td class="num">43.7 ms</td><td class="num">1.9 ms</td><td class="num x">23x</td>
+                  <td class="bars" aria-hidden="true"><span class="bar-track"><span class="bar-builtin"></span><span class="bar-gleon" style="--r: 4.3%"></span></span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Failed</th><td>390x844</td><td class="num">77.5 ms</td><td class="num">4.2 ms</td><td class="num x">18x</td>
+                  <td class="bars" aria-hidden="true"><span class="bar-track"><span class="bar-builtin"></span><span class="bar-gleon" style="--r: 5.4%"></span></span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="bench-note">Exact comparison, mean time on an Apple M3 Max. Built-in is the comparator of the Flutter SDK 3.47.6. The time to render the frame is the same for both and is not included. The <a href="https://github.com/gleon-rs/flutter#performance">package README</a> has all tables. For PNG byte inputs, gleon is 4.8 to 20 times faster.</p>
+        </div>
+
+        <ul class="proof">
+          <li><b>1,800 goldens</b><span>of a real app run on gleon in <code>ssim</code> mode. CI tests each change on all four hosts.</span></li>
+          <li><b>About 1 MB</b><span>for the native library. The SDK downloads it on the first test run, checks it against <code>SHA256SUMS.txt</code> and keeps it for offline runs.</span></li>
+          <li><b>No Rust toolchain</b><span>is necessary on the computers that run your tests. CLI releases have build provenance attestations.</span></li>
+          <li><b>The margin of each golden</b><span>Optional metrics show how near each golden that passed was to its thresholds.</span>
+<pre class="code wrap-lines"><code>gleon ✓ test/goldens/swatch.png  ssim 0.931 (≥0.800, +0.131)  color 5.2 (≤8, +2.8)  12 ms</code></pre>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platforms -->
+  <section class="section" id="platforms" aria-labelledby="platforms-title">
+    <div class="wrap">
+      <h2 id="platforms-title">Where it runs</h2>
+      <p class="intro">You can record goldens on each of these platforms. Each golden records the platform that made it.</p>
+
+      <div class="platforms section-body">
+        <div>
+          <h3 class="lang-cli">gleon CLI</h3>
+          <ul class="hosts">
+            <li><code>gleon-macos-aarch64</code><span>macOS on Apple silicon</span></li>
+            <li><code>gleon-linux-x86_64</code><span>Linux x86_64, Ubuntu 26.04 or newer</span></li>
+            <li><code>gleon-windows-x86_64.exe</code><span>Windows x86_64, no extra runtime</span></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="lang-flutter">Flutter package</h3>
+          <ul class="hosts">
+            <li>macOS<span>arm64</span></li>
+            <li>Linux<span>x64 and arm64, glibc of Ubuntu 26.04 or newer</span></li>
+            <li>Windows<span>x64</span></li>
+            <li>Flutter<span>3.47.5 or newer</span></li>
+          </ul>
+        </div>
+      </div>
+      <p class="platforms-note">Not supported: macOS on Intel, Linux with musl (for example Alpine), web builds and tests on a device. gleon compares PNG images.</p>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section" id="pricing" aria-labelledby="pricing-title">
+    <div class="wrap">
+      <h2 id="pricing-title">Pricing</h2>
+      <p class="intro">gleon is free for all users until December 31, 2026. Commercial licenses and their prices come in 2027.</p>
+
+      <div class="pricing section-body">
+        <div class="plan plan-free">
+          <h3>Free</h3>
+          <p class="price">$0</p>
+          <p class="when">Business Source License 1.1</p>
+          <ul>
+            <li>Individuals and hobbyists</li>
+            <li>Non-commercial open-source repositories</li>
+            <li>Unlimited local development</li>
+            <li>All other use, until December 31, 2026, with a current official release</li>
+          </ul>
+          <div class="actions">
+            <a class="btn btn-primary" href="#install">Install the CLI</a>
+          </div>
+        </div>
+
+        <div class="plan">
+          <h3>Commercial license</h3>
+          <p class="price">Prices in 2027</p>
+          <p class="when">For commercial CI/CD use</p>
+          <ul>
+            <li>An offline key for an owner, a repository pattern and an expiry date</li>
+            <li>gleon does not send data to a server</li>
+            <li>Set the key in <code>GLEON_LICENSE_KEY</code> or in the <code>license-key</code> input of the Action</li>
+            <li>14 days of grace after the key expires</li>
+          </ul>
+          <div class="actions">
+            <button class="btn" type="button" disabled aria-describedby="license-later">Get a license</button>
+            <span class="later" id="license-later">Available in 2027</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="license-text">
+        <h3>What is open source</h3>
+        <div>
+          <p>The comparison engine (<code>gleon-engine</code>, <code>gleon-model</code>, <code>gleon-ffi</code>) is MIT or Apache-2.0. The Flutter package is MIT. The CLI and <code>gleon-core</code> use the Business Source License 1.1. Each version becomes Apache-2.0 four years after its release, or on July 13, 2030, if that date is earlier.</p>
+          <p>Without a key, private CI shows a warning and continues. With <code>--strict</code>, the warning becomes exit code 42. In private CI without a key, use an official release that is less than 90 days old: older releases and builds from source stop with exit code 42. Read the <a href="https://github.com/gleon-rs/gleon/blob/main/LICENSE">full license</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Install -->
+  <section class="section" id="install" aria-labelledby="install-title">
+    <div class="wrap">
+      <h2 id="install-title">Install</h2>
+
+      <div class="install section-body">
+        <div class="lang-cli">
+          <h3>gleon CLI</h3>
+          <p>Download the binary for your system from the <a href="https://github.com/gleon-rs/gleon/releases">releases page</a>, or use <code>gh</code>:</p>
+<pre class="code"><code><span class="sel">gh release download --repo gleon-rs/gleon --pattern gleon-macos-aarch64</span>
+<span class="sel">install -m 755 gleon-macos-aarch64 ~/.local/bin/gleon</span></code></pre>
+          <p>On Linux, use <code>gleon-linux-x86_64</code>. On Windows, use <code>gleon-windows-x86_64.exe</code>. Each release has <code>SHA256SUMS.txt</code> and a build attestation for each file.</p>
+          <p class="soon"><span class="status">Homebrew support comes soon</span></p>
+        </div>
+
+        <div class="lang-flutter">
+          <h3>Flutter package</h3>
+          <p>Add the package from a <a href="https://github.com/gleon-rs/flutter/releases">release tag</a>, then change one import:</p>
+<pre class="code"><code>dev_dependencies:
+  gleon:
+    git:
+      url: https://github.com/gleon-rs/flutter.git
+      ref: vX.Y.Z <span class="comment"># a release tag</span></code></pre>
+<pre class="code"><code><span class="del">import 'package:flutter_test/flutter_test.dart';</span>
+<span class="sel">import 'package:gleon/gleon.dart';</span></code></pre>
+          <p>The <a href="https://github.com/gleon-rs/flutter">package guide</a> shows how to load the real fonts, set tolerances and configure a workspace.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-cols">
+      <div>
+        <a class="wordmark" href="/">gleon</a>
+        <p>The comparison engine for your golden tests.</p>
+      </div>
+      <nav aria-labelledby="foot-cli">
+        <h2 id="foot-cli">gleon CLI</h2>
+        <ul>
+          <li><a href="https://github.com/gleon-rs/gleon">Source</a></li>
+          <li><a href="https://github.com/gleon-rs/gleon/releases">Releases</a></li>
+          <li><a href="https://github.com/gleon-rs/gleon/issues">Issues</a></li>
+          <li><a href="https://github.com/gleon-rs/gleon/blob/main/LICENSE">License</a></li>
+        </ul>
+      </nav>
+      <nav aria-labelledby="foot-flutter">
+        <h2 id="foot-flutter">Flutter package</h2>
+        <ul>
+          <li><a href="https://github.com/gleon-rs/flutter">Source</a></li>
+          <li><a href="https://github.com/gleon-rs/flutter/releases">Releases</a></li>
+          <li><a href="https://github.com/gleon-rs/flutter/issues">Issues</a></li>
+          <li><a href="https://github.com/gleon-rs/flutter/blob/main/doc/alchemist.md">alchemist guide</a></li>
+        </ul>
+      </nav>
+      <nav aria-labelledby="foot-project">
+        <h2 id="foot-project">Project</h2>
+        <ul>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#install">Install</a></li>
+          <li><a href="https://github.com/gleon-rs/gleon/blob/main/NOTICE/TRADEMARK.md">Trademark policy</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="fineprint">gleon and gleon.rs are trademarks of Roman Cinis. © 2026 Roman Cinis.</p>
+  </div>
+</footer>
+</body>
+</html>
