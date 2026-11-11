@@ -302,7 +302,7 @@ Run run-20261020T101500Z-1a2b3c4d: 128 case(s): 125 passed, <span class="fail">3
 
         <ul class="proof">
           <li><b>1,800 goldens</b><span>of a real app run on gleon in <code>ssim</code> mode. CI tests each change on all four hosts.</span></li>
-          <li><b>About 1 MB</b><span>for the native library. The SDK downloads it on the first test run, checks it against <code>SHA256SUMS.txt</code> and keeps it for offline runs.</span></li>
+          <li><b>About 1 MB</b><span>for the native library of each host. The package from pub.dev contains them, so your tests download nothing and run offline.</span></li>
           <li><b>No Rust toolchain</b><span>is necessary on the computers that run your tests. CLI releases have build provenance attestations.</span></li>
           <li><b>The margin of each golden</b><span>Optional metrics show how near each golden that passed was to its thresholds.</span>
 <pre class="code wrap-lines"><code>gleon ✓ test/goldens/swatch.png  ssim 0.931 (≥0.800, +0.131)  color 5.2 (≤8, +2.8)  12 ms</code></pre>
@@ -333,7 +333,7 @@ Run run-20261020T101500Z-1a2b3c4d: 128 case(s): 125 passed, <span class="fail">3
             <li>macOS<span>arm64</span></li>
             <li>Linux<span>x64 and arm64, glibc of Ubuntu 26.04 or newer</span></li>
             <li>Windows<span>x64</span></li>
-            <li>Flutter<span>3.47.5 or newer</span></li>
+            <li>Flutter<span>3.50 or newer</span></li>
           </ul>
         </div>
       </div>
@@ -407,12 +407,8 @@ Run run-20261020T101500Z-1a2b3c4d: 128 case(s): 125 passed, <span class="fail">3
 
         <div class="lang-flutter">
           <h3>Flutter package</h3>
-          <p>Add the package from a <a href="https://github.com/gleon-rs/flutter/releases">release tag</a>, then change one import:</p>
-<pre class="code"><code>dev_dependencies:
-  gleon:
-    git:
-      url: https://github.com/gleon-rs/flutter.git
-      ref: vX.Y.Z <span class="comment"># a release tag</span></code></pre>
+          <p>Add the package as a dev dependency, then change one import:</p>
+<pre class="code"><code><span class="sel">flutter pub add dev:gleon</span></code></pre>
 <pre class="code"><code><span class="del">import 'package:flutter_test/flutter_test.dart';</span>
 <span class="sel">import 'package:gleon/gleon.dart';</span></code></pre>
           <p>The <a href="https://github.com/gleon-rs/flutter">package guide</a> shows how to load the real fonts, set tolerances and configure a workspace.</p>
