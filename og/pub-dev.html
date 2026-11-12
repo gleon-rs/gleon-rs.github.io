@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<title>gleon pub.dev screenshot</title>
+<!-- Source of the pub.dev screenshot of the Flutter package (flutter/doc/screenshot.webp, 1200x1200).
+     Numbers: "Performance" and the coverage of the package README. Re-render with headless Chrome,
+     then convert (cwebp -lossless):
+     chrome --headless=new --hide-scrollbars --blink-settings=preferredColorScheme=1 --window-size=1200,1200 --screenshot=screenshot.png og/pub-dev.html -->
+<link rel="stylesheet" href="../styles.css">
+<style>
+  html, body { width: 1200px; height: 1200px; overflow: hidden; background: var(--bg); }
+  .card {
+    display: flex; flex-direction: column; justify-content: space-between;
+    width: 1200px; height: 1200px; padding: 60px 72px 56px;
+    border-bottom: 10px solid var(--ink);
+  }
+  .card .wordmark { font-size: 2.25rem; }
+  .card h1 { margin-top: 28px; font-size: 4.5rem; }
+  .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; list-style: none; }
+  .tile { padding: 24px 28px; border-radius: 12px; background: var(--surface); }
+  .tile b {
+    display: block; font-size: 4.5rem; font-weight: 700; line-height: 1;
+    letter-spacing: -0.03em; font-variation-settings: "opsz" 96;
+  }
+  .tile span { display: block; margin-top: 10px; font-size: 1.375rem; color: var(--muted); }
+  .chart-head { display: flex; justify-content: space-between; align-items: baseline; }
+  .chart-head h2 { max-width: none; font-size: 1.75rem; }
+  .legend { display: flex; gap: 24px; list-style: none; font-size: 1.125rem; }
+  .legend li::before {
+    content: ""; display: inline-block; width: 14px; height: 14px; margin-right: 8px;
+    border-radius: 3px; vertical-align: -1px;
+  }
+  .legend .ft::before { background: #a4acb6; }
+  .legend .gl::before { background: var(--flutter); }
+  .chart svg { margin-top: 12px; overflow: visible; }
+  .chart text { font-family: var(--sans); fill: var(--ink); }
+  .chart .group { font-size: 17px; font-weight: 600; fill: var(--muted); }
+  .chart .end { text-anchor: end; }
+  .chart .size { font-size: 20px; font-weight: 600; }
+  .chart .val { font-size: 17px; font-variant-numeric: tabular-nums; }
+  .chart .speed { font-size: 32px; font-weight: 700; text-anchor: end; letter-spacing: -0.02em; }
+  .chart .tick { font-size: 14px; fill: var(--muted); text-anchor: middle; }
+  .chart .grid { stroke: var(--rule); stroke-width: 1; }
+  .chart .ft { fill: #a4acb6; }
+  .chart .gl { fill: var(--flutter); }
+  .note { margin-top: 6px; font-size: 1rem; color: var(--muted); }
+  .foot { display: flex; justify-content: space-between; align-items: center; }
+  .foot code {
+    padding: 10px 16px; border-radius: 8px; background: var(--surface); font-size: 1.375rem;
+  }
+  .foot p { font-size: 1.375rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="card">
+  <div>
+    <span class="wordmark">gleon</span>
+    <h1>Golden tests, 5&#8211;20x faster.</h1>
+  </div>
+  <ul class="tiles">
+    <li class="tile"><b>100%</b><span>line coverage of the package</span></li>
+    <li class="tile"><b>1 line</b><span>to migrate: the import</span></li>
+  </ul>
+  <figure class="chart">
+    <div class="chart-head">
+      <h2>Time per golden</h2>
+      <ul class="legend"><li class="ft">flutter_test</li><li class="gl">gleon</li></ul>
+    </div>
+    <svg width="1056" height="472" viewBox="0 0 1056 472" role="img" aria-label="Time per golden in milliseconds, flutter_test and gleon">
+      <line class="grid" x1="150.0" y1="38" x2="150.0" y2="442"/>
+      <text class="tick" x="150.0" y="466">0</text>
+      <line class="grid" x1="383.3333333333333" y1="38" x2="383.3333333333333" y2="442"/>
+      <text class="tick" x="383.3333333333333" y="466">30</text>
+      <line class="grid" x1="616.6666666666666" y1="38" x2="616.6666666666666" y2="442"/>
+      <text class="tick" x="616.6666666666666" y="466">60</text>
+      <line class="grid" x1="850.0" y1="38" x2="850.0" y2="442"/>
+      <text class="tick" x="850.0" y="466">90 ms</text>
+      <text class="group" x="0" y="32">Passing golden</text>
+      <text class="group end" x="1056" y="32">Speedup</text>
+      <text class="size" x="0" y="75">400x300</text>
+      <path class="ft" d="M150 46h70.67a4.00 4.00 0 0 1 4.00 4.00v14.00a4.00 4.00 0 0 1 -4.00 4.00h-70.67z"/>
+      <text class="val" x="234.7" y="62">9.60 ms</text>
+      <path class="gl" d="M150 70h1.67a1.67 1.67 0 0 1 1.67 1.67v18.66a1.67 1.67 0 0 1 -1.67 1.67h-1.67z"/>
+      <text class="val" x="163.3" y="86">0.43 ms</text>
+      <text class="speed" x="1056" y="78">22x</text>
+      <text class="size" x="0" y="149">390x844</text>
+      <path class="ft" d="M150 120h116.56a4.00 4.00 0 0 1 4.00 4.00v14.00a4.00 4.00 0 0 1 -4.00 4.00h-116.56z"/>
+      <text class="val" x="280.6" y="136">15.5 ms</text>
+      <path class="gl" d="M150 144h5.26a4.00 4.00 0 0 1 4.00 4.00v14.00a4.00 4.00 0 0 1 -4.00 4.00h-5.26z"/>
+      <text class="val" x="169.3" y="160">1.19 ms</text>
+      <text class="speed" x="1056" y="152">13x</text>
+      <text class="size" x="0" y="223">1170x2532</text>
+      <path class="ft" d="M150 194h691.33a4.00 4.00 0 0 1 4.00 4.00v14.00a4.00 4.00 0 0 1 -4.00 4.00h-691.33z"/>
+      <text class="val" x="855.3" y="210">89.4 ms</text>
+      <path class="gl" d="M150 218h52.78a4.00 4.00 0 0 1 4.00 4.00v14.00a4.00 4.00 0 0 1 -4.00 4.00h-52.78z"/>
+      <text class="val" x="216.8" y="234">7.3 ms</text>
+      <text class="speed" x="1056" y="226">12x</text>
+      <text class="group" x="0" y="300">Failing golden</text>
+      <text class="size" x="0" y="343">400x300</text>
+      <path class="ft" d="M150 314h335.89a4.00 4.00 0 0 1 4.00 4.00v14.00a4.00 4.00 0 0 1 -4.00 4.00h-335.89z"/>
+      <text class="val" x="499.9" y="330">43.7 ms</text>
+      <path class="gl" d="M150 338h10.78a4.00 4.00 0 0 1 4.00 4.00v14.00a4.00 4.00 0 0 1 -4.00 4.00h-10.78z"/>
+      <text class="val" x="174.8" y="354">1.9 ms</text>
+      <text class="speed" x="1056" y="346">23x</text>
+      <text class="size" x="0" y="417">390x844</text>
+      <path class="ft" d="M150 388h598.78a4.00 4.00 0 0 1 4.00 4.00v14.00a4.00 4.00 0 0 1 -4.00 4.00h-598.78z"/>
+      <text class="val" x="762.8" y="404">77.5 ms</text>
+      <path class="gl" d="M150 412h28.67a4.00 4.00 0 0 1 4.00 4.00v14.00a4.00 4.00 0 0 1 -4.00 4.00h-28.67z"/>
+      <text class="val" x="192.7" y="428">4.2 ms</text>
+      <text class="speed" x="1056" y="420">18x</text>
+    </svg>
+    <figcaption class="note">Widget golden, Apple M3 Max, Flutter 3.47.6, gleon 0.3.0.</figcaption>
+  </figure>
+  <div class="foot">
+    <code>flutter pub add dev:gleon</code>
+    <p>gleon.rs</p>
+  </div>
+</div>
+</body>
+</html>

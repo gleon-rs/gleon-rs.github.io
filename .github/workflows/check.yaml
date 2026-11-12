@@ -34,7 +34,7 @@ jobs:
       # The repository has no packages: npx fetches the checker in CI only.
       # Dependabot does not see this pin: bump it by hand, to a release at least a week old.
       - name: Validate the pages
-        run: npx --yes html-validate@11.17.0 index.html 404.html og/card.html
+        run: npx --yes html-validate@11.17.0 index.html 404.html og/card.html og/pub-dev.html
 
   links:
     name: Links
